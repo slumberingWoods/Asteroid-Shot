@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://beu7uf14ux7rm"]
+
+[ext_resource type="Script" uid="uid://wl4yy6hoo46m" path="res://Entities/cannon.gd" id="1_6vdxd"]
+[ext_resource type="Texture2D" uid="uid://04k6745klapu" path="res://Assets/Cannon.svg" id="1_jyqqm"]
+
+[node name="Cannon" type="Node2D" unique_id=15126260]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_6vdxd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1504402106]
+texture = ExtResource("1_jyqqm")
