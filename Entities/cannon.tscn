@@ -3,9 +3,24 @@
 [ext_resource type="Script" uid="uid://wl4yy6hoo46m" path="res://Entities/cannon.gd" id="1_6vdxd"]
 [ext_resource type="Texture2D" uid="uid://04k6745klapu" path="res://Assets/Cannon.svg" id="1_jyqqm"]
 
-[node name="Cannon" type="Node2D" unique_id=15126260]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmt7p"]
+size = Vector2(98, 92.33334)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eijyc"]
+size = Vector2(100, 100)
+
+[node name="Cannon" type="StaticBody2D" unique_id=1442655570]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_6vdxd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1504402106]
 texture = ExtResource("1_jyqqm")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2076925685]
+position = Vector2(0, -110)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=164713162]
+shape = SubResource("RectangleShape2D_dmt7p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=276298179]
+shape = SubResource("RectangleShape2D_eijyc")

@@ -8,7 +8,6 @@ radius = 55.0
 
 [node name="Asteroid" type="CharacterBody2D" unique_id=1807375324]
 script = ExtResource("1_628d6")
-accel = -15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=823361798]
 z_index = -1
