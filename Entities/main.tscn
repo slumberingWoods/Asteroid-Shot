@@ -17,3 +17,4 @@ scale = Vector2(1, 1)
 [node name="Obstacle" parent="." unique_id=1994782007 instance=ExtResource("3_lx4a3")]
 position = Vector2(965, 353)
 min_impact_speed = 100.0
+momentum_retained = 0.8
