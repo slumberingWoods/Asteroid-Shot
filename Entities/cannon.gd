@@ -4,7 +4,6 @@ extends StaticBody2D
 @onready var spawn_shape: CollisionShape2D = $Area2D/CollisionShape2D
 
 @export var turn_speed := 10.0
-@export var ammo := 10
 @export var speedup := 5.0
 @export var maxSpeedMult := 3.0
 
@@ -24,7 +23,7 @@ func _process(delta):
 		print("Charging")
 	if Input.is_action_pressed("game_shoot") and shootHolding == true: 
 		if speedMult < maxSpeedMult:
-			speedMult += delta
+			speedMult += delta * 1.1
 	if Input.is_action_just_released("game_shoot") and shootHolding == true:
 		shootHolding = false
 		print(speedMult)
@@ -48,14 +47,14 @@ func _physics_process(delta):
 	pass
 
 func shoot(mult: float):
-	if ammo > 0:
-		ammo -= 1
-		var instance = projectile.instantiate()
-		instance.spawn_pos = spawn_shape.global_position
-		instance.spawn_rotation = global_rotation
-		instance.speed *= 1 + mult
-		get_tree().current_scene.add_child.call_deferred(instance)
-	else: 
+	if not StageManager.consume_ammo():
 		print("No more ammo")
+		return
+	var instance = projectile.instantiate()
+	instance.spawn_pos = spawn_shape.global_position
+	instance.spawn_rotation = global_rotation
+	instance.speed *= 1 + mult
+	instance.type = StageManager.selected_ammo_type  # assumes asteroid has a `type` property
+	get_tree().current_scene.add_child.call_deferred(instance)
 		
 	
