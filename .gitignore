@@ -27,3 +27,8 @@ mono_crash.*.json
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+#Vscode
+
+.vscode/*
+.history/*
