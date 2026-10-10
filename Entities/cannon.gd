@@ -4,7 +4,13 @@ extends StaticBody2D
 @onready var spawn_shape: CollisionShape2D = $Area2D/CollisionShape2D
 
 @export var turn_speed := 10.0
+@export var ammo := 10
+@export var speedup := 5.0
+@export var maxSpeedMult := 3.0
 
+var timeHolding := false
+var shootHolding := false
+var speedMult := 0.0
 
 func _ready():
 	pass
@@ -13,15 +19,43 @@ func _process(delta):
 	var dir = get_global_mouse_position() - global_position
 	var target_angle = dir.angle() + PI / 2
 	global_rotation = lerp_angle(global_rotation, target_angle, 1.0 - exp(-turn_speed * delta))
+	if Input.is_action_pressed("game_shoot") and shootHolding == false:
+		shootHolding = true
+		print("Charging")
+	if Input.is_action_pressed("game_shoot") and shootHolding == true: 
+		if speedMult < maxSpeedMult:
+			speedMult += delta
+	if Input.is_action_just_released("game_shoot") and shootHolding == true:
+		shootHolding = false
+		print(speedMult)
+		shoot(speedMult)
+		speedMult = 0
+
+		
+func _input(event: InputEvent) -> void:
+	if Input.is_action_pressed("game_slow") and timeHolding == false:
+		timeHolding = true	
+		Engine.time_scale = speedup
+		print("Speed up.")
+	if Input.is_action_just_released("game_slow") and timeHolding == true:
+		Engine.time_scale = 1.0
+		print("Slow down.")
+		timeHolding	 = false
+
+		
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("shoot"): shoot()
+	pass
 
-func shoot():
-	var instance = projectile.instantiate()
-	instance.spawn_pos = spawn_shape.global_position
-	instance.spawn_rotation = global_rotation
-	get_tree().current_scene.add_child.call_deferred(instance)
-
-func _on_cooldown_timeout():
-	shoot()
+func shoot(mult: float):
+	if ammo > 0:
+		ammo -= 1
+		var instance = projectile.instantiate()
+		instance.spawn_pos = spawn_shape.global_position
+		instance.spawn_rotation = global_rotation
+		instance.speed *= 1 + mult
+		get_tree().current_scene.add_child.call_deferred(instance)
+	else: 
+		print("No more ammo")
+		
+	
