@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://swvq054028mb"]
+
+[ext_resource type="Texture2D" uid="uid://ch1blrqgr3q23" path="res://Assets/Obstacle.svg" id="1_5u5vr"]
+[ext_resource type="Script" uid="uid://c4ylvclx7djv1" path="res://Entities/orbiter.gd" id="1_a04ff"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmt7p"]
+size = Vector2(110, 110)
+
+[node name="Orbiter" type="CharacterBody2D" unique_id=1978063325]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_a04ff")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=258469860]
+texture = ExtResource("1_5u5vr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1500203349]
+shape = SubResource("RectangleShape2D_dmt7p")

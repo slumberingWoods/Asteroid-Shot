@@ -29,9 +29,8 @@ func _process(delta):
 		print(speedMult)
 		shoot(speedMult)
 		speedMult = 0
-
 		
-func _input(event: InputEvent) -> void:
+func _input(event: InputEvent):
 	if Input.is_action_pressed("game_slow") and timeHolding == false:
 		timeHolding = true	
 		Engine.time_scale = speedup
@@ -40,8 +39,13 @@ func _input(event: InputEvent) -> void:
 		Engine.time_scale = 1.0
 		print("Slow down.")
 		timeHolding	 = false
+	
 
-		
+func _unhandled_input(event):
+	if event.is_action_pressed("game_ammo_next"):
+		switch_ammo(1)
+	elif event.is_action_pressed("game_ammo_prev"):
+		switch_ammo(-1)
 
 func _physics_process(delta):
 	pass
@@ -56,5 +60,12 @@ func shoot(mult: float):
 	instance.speed *= 1 + mult
 	instance.type = StageManager.selected_ammo_type  # assumes asteroid has a `type` property
 	get_tree().current_scene.add_child.call_deferred(instance)
-		
-	
+
+func switch_ammo(direction := 1) -> void:
+	StageManager.cycle_ammo_type(direction)
+
+func switch_ammo_to(type: GlobalEnums.AsteroidType) -> bool:
+	if not StageManager.select_ammo_type(type):
+		print("Ammo type %s not allowed on this stage" % type)
+		return false
+	return true

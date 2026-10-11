@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cd0qn5ywrs10u"]
+
+[ext_resource type="Script" uid="uid://mjchjgylo02n" path="res://Utilities/stage_manager.gd" id="1_dqdwq"]
+[ext_resource type="PackedScene" uid="uid://cstmt7itg537b" path="res://Stages/1_st_stage.tscn" id="2_74i4i"]
+[ext_resource type="PackedScene" uid="uid://chckyyqdkvi3a" path="res://Stages/2_nd_stage.tscn" id="3_n1pa2"]
+
+[node name="main" type="Node2D" unique_id=1075153312]
+
+[node name="stage manager" type="Node" parent="." unique_id=2018303934]
+script = ExtResource("1_dqdwq")
+stages = Array[PackedScene]([ExtResource("2_74i4i"), ExtResource("3_n1pa2")])

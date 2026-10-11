@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cstmt7itg537b"]
+
+[ext_resource type="PackedScene" uid="uid://beu7uf14ux7rm" path="res://Entities/cannon.tscn" id="1_j8kih"]
+[ext_resource type="Script" uid="uid://c67613xmonfh3" path="res://Utilities/stage.gd" id="1_mquqn"]
+[ext_resource type="PackedScene" uid="uid://b1l2l7valx4yj" path="res://Entities/obstacle.tscn" id="2_mquqn"]
+
+[node name="1st_stage" type="Node2D" unique_id=1260221731]
+script = ExtResource("1_mquqn")
+ammo = 10
+allowed_sizes = Array[int]([0, 2, 1])
+
+[node name="Cannon" parent="." unique_id=1442655570 instance=ExtResource("1_j8kih")]
+position = Vector2(100, 350)
+rotation = 1.5707964
+scale = Vector2(1, 1)
+
+[node name="Obstacle" parent="." unique_id=1808732342 instance=ExtResource("2_mquqn")]
+position = Vector2(746, 361)
+min_impact_speed = 100.0
+momentum_retained = 0.8

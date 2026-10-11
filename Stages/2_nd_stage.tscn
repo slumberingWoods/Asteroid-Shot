@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://chckyyqdkvi3a"]
+
+[ext_resource type="PackedScene" uid="uid://beu7uf14ux7rm" path="res://Entities/cannon.tscn" id="1_0kfbd"]
+[ext_resource type="Script" uid="uid://c67613xmonfh3" path="res://Utilities/stage.gd" id="1_t5tyc"]
+[ext_resource type="PackedScene" uid="uid://cx7d0f4dury5q" path="res://Entities/orbit_center.tscn" id="2_0kfbd"]
+[ext_resource type="PackedScene" uid="uid://swvq054028mb" path="res://Entities/orbiter.tscn" id="4_ongsq"]
+
+[node name="2_nd_stage" type="Node2D" unique_id=1625780823]
+script = ExtResource("1_t5tyc")
+ammo = 10
+allowed_sizes = Array[int]([0, 1, 2])
+
+[node name="Cannon" parent="." unique_id=1442655570 instance=ExtResource("1_0kfbd")]
+position = Vector2(100, 350)
+rotation = 1.5707964
+scale = Vector2(1, 1)
+
+[node name="Orbit_center" parent="." unique_id=850946800 instance=ExtResource("2_0kfbd")]
+position = Vector2(1025, 335)
+capture_radius = 300.0
+orbit_radius = 300.0
+
+[node name="Orbiter" parent="." unique_id=1978063325 instance=ExtResource("4_ongsq")]
+position = Vector2(815, 340)
+
+[node name="Orbiter2" parent="." unique_id=934107806 instance=ExtResource("4_ongsq")]
+position = Vector2(993, 500)
