@@ -18,7 +18,7 @@ scale = Vector2(1, 1)
 [node name="Orbit_center" parent="." unique_id=850946800 instance=ExtResource("2_0kfbd")]
 position = Vector2(1025, 335)
 capture_radius = 300.0
-orbit_radius = 300.0
+is_final = true
 
 [node name="Orbiter" parent="." unique_id=1978063325 instance=ExtResource("4_ongsq")]
 position = Vector2(815, 340)

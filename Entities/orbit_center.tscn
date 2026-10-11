@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cx7d0f4dury5q"]
 
 [ext_resource type="Script" uid="uid://dh65kkul2udvd" path="res://Entities/orbit_center.gd" id="1_fknnh"]
-[ext_resource type="Texture2D" uid="uid://020dcuvyjsau" path="res://Assets/Orbit_Center.svg" id="2_rkp1h"]
+[ext_resource type="Texture2D" uid="uid://cox643r051bk8" path="res://Assets/Enemy.png" id="2_fewqy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dmt7p"]
 radius = 60.0
@@ -10,7 +10,8 @@ radius = 60.0
 script = ExtResource("1_fknnh")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1546221095]
-texture = ExtResource("2_rkp1h")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_fewqy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=663546597]
 shape = SubResource("CircleShape2D_dmt7p")

@@ -20,6 +20,7 @@ config/icon="res://Assets/icon.svg"
 GameManager="*uid://qep4ue4o6v1o"
 Enums="*uid://cb65eoy6ogdpw"
 StageManager="*uid://mjchjgylo02n"
+EventBus="*uid://bm7qcf51cxs8k"
 
 [display]
 

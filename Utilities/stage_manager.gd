@@ -4,12 +4,11 @@ signal stage_changed(stage: Node)
 signal ammo_changed(amount: int)
 signal ammo_type_selected(type: GlobalEnums.AsteroidType)
 signal enemies_changed(remaining: int)
-signal stage_cleared
-signal stage_failed
 
 var stages: Array[PackedScene] = [
 	preload("res://Stages/1_st_stage.tscn"),
 	preload("res://Stages/2_nd_stage.tscn"),
+	preload("res://Stages/3_rd_stage.tscn"),
 ]
  
 var current_stage: Stage = null
@@ -106,29 +105,3 @@ func consume_ammo(amount := 1) -> bool:
 func add_ammo(amount: int):
 	ammo += amount
 	ammo_changed.emit(ammo)
-
-# ---------- Enemies ----------
-func register_enemy(count := 1):
-	enemies_remaining += count
-	enemies_changed.emit(enemies_remaining)
-func unregister_enemy():
-	enemies_remaining = maxi(enemies_remaining - 1, 0)
-	enemies_changed.emit(enemies_remaining)
-	_check_end_conditions()
-
-## Call when a shot is spent (e.g. projectile hit or left the stage),
-## so "out of ammo" is only judged once nothing is still in flight.
-func notify_shot_resolved():
-	shots_in_flight = maxi(shots_in_flight - 1, 0)
-	_check_end_conditions()
-
-# ---------- Win / lose ----------
-func _check_end_conditions():
-	if _finished:
-		return
-	if enemies_remaining == 0:
-		_finished = true
-		stage_cleared.emit()
-	elif ammo <= 0 and shots_in_flight == 0:
-		_finished = true
-		stage_failed.emit()

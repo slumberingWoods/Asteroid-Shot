@@ -4,7 +4,6 @@ extends Control
 @onready var stage_buttons: Control = $MainMenu/ColorRect/MarginContainer/GridContainer
 @onready var return_button: Button = $Button
 
-
 func _ready():
 	var index := 0
 	for child in stage_buttons.get_children():
@@ -14,7 +13,8 @@ func _ready():
 
 	return_button.pressed.connect(_on_return_pressed)
 	StageManager.stage_changed.connect(_on_stage_changed)
-
+	EventBus.stage_cleared.connect(_on_return_pressed)
+	EventBus.stage_failed.connect(_on_return_pressed)
 	_show_menu()
 
 

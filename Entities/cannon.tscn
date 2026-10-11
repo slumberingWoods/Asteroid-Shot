@@ -1,26 +1,48 @@
 [gd_scene format=3 uid="uid://beu7uf14ux7rm"]
 
 [ext_resource type="Script" uid="uid://wl4yy6hoo46m" path="res://Entities/cannon.gd" id="1_6vdxd"]
-[ext_resource type="Texture2D" uid="uid://04k6745klapu" path="res://Assets/Cannon.svg" id="1_jyqqm"]
+[ext_resource type="Texture2D" uid="uid://cuxxbrbph8s5e" path="res://Assets/Hand-1.png" id="2_6vdxd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_168ir"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dmt7p"]
 size = Vector2(98, 92.33334)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eijyc"]
-size = Vector2(100, 100)
+size = Vector2(119.333336, 173.33334)
 
 [node name="Cannon" type="StaticBody2D" unique_id=1442655570]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_6vdxd")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1482532049]
+visible = false
+sprite_frames = SubResource("SpriteFrames_168ir")
+animation = &"new_animation"
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1504402106]
-texture = ExtResource("1_jyqqm")
+position = Vector2(-51.333336, 22.666668)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6vdxd")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2076925685]
 position = Vector2(0, -110)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=164713162]
+position = Vector2(0, 23.333334)
 shape = SubResource("RectangleShape2D_dmt7p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=276298179]
+position = Vector2(-9.666668, 36.666668)
 shape = SubResource("RectangleShape2D_eijyc")

@@ -10,6 +10,8 @@ class_name Asteroid
 @export_group("Per-type visuals")
 @export var type_textures: Array[Texture2D] = [null, null, null]
 @export var type_scales: Array[float] = [0.6, 1.0, 1.6]
+@export var image_scales: Array[float] = [0.3, 0.3, 0.4]
+@export var image_size: Array[float] = [60, 100, 160]
 
 @export_group("Physics")
 @export var size_impact_mult: Array[float] = [1.0, 1.5, 2.5]
@@ -45,7 +47,8 @@ func apply_type():
 	if not type_textures.is_empty() and type_textures[tex_i] != null:
 		sprite.texture = type_textures[tex_i]
 	var s := type_scales[i]
-	sprite.scale = _base_sprite_scale * s
+	var b := image_scales[i]
+	sprite.scale = _base_sprite_scale * b
 	collision_shape.scale = _base_collision_scale * s
 
 func _physics_process(delta: float):

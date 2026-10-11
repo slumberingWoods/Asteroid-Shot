@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ciwnoah4mn5gu"]
 
 [ext_resource type="Script" uid="uid://dyo12ssrmaegq" path="res://Utilities/menu_manager.gd" id="1_005xu"]
+[ext_resource type="Texture2D" uid="uid://p8b4p3ut2138" path="res://Assets/Logo.png" id="2_cxkd2"]
 
 [node name="MenuUI" type="Control" unique_id=1516809323]
 layout_mode = 3
@@ -43,17 +44,47 @@ theme_override_constants/margin_bottom = 10
 
 [node name="GridContainer" type="GridContainer" parent="MainMenu/ColorRect/MarginContainer" unique_id=1756026459]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="Button" type="Button" parent="MainMenu/ColorRect/MarginContainer/GridContainer" unique_id=117825570]
 layout_mode = 2
-text = "Stage 1"
+text = "Stage 1 - Obstacle + Small Asteroid"
 
 [node name="Button2" type="Button" parent="MainMenu/ColorRect/MarginContainer/GridContainer" unique_id=1975860861]
 layout_mode = 2
-text = "Stage 2"
+text = "Stage 2 - Orbits + All"
+
+[node name="Button3" type="Button" parent="MainMenu/ColorRect/MarginContainer/GridContainer" unique_id=233908607]
+layout_mode = 2
+text = "Stage 3- Orbits + Obstacles + Large"
+
+[node name="Logo" type="Sprite2D" parent="MainMenu/ColorRect/MarginContainer/GridContainer" unique_id=1099983187]
+position = Vector2(410, 90)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_cxkd2")
 
 [node name="Button" type="Button" parent="." unique_id=22069807]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -1.0
+offset_right = 129.0
+offset_bottom = 31.0
 text = "Return to Menu"
+
+[node name="Panel" type="Panel" parent="." unique_id=1565862339]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 10.0
+offset_right = 200.0
+offset_bottom = 91.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Panel" unique_id=1930903917]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "LMB - Tap to shoot, hold for more speed
+RMB - Hold to speed up time
+Q,E - Switch ammo type"

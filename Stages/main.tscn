@@ -1,11 +1,26 @@
 [gd_scene format=3 uid="uid://cd0qn5ywrs10u"]
 
+[ext_resource type="Texture2D" uid="uid://b8hg2b8akw08" path="res://Assets/background.png" id="2_lxwtg"]
 [ext_resource type="PackedScene" uid="uid://ciwnoah4mn5gu" path="res://Utilities/menu_ui.tscn" id="4_74i4i"]
 
 [node name="main" type="Node2D" unique_id=1075153312]
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=304139297]
+position = Vector2(574.00006, 296)
+scale = Vector2(0.1731387, 0.15836734)
+texture = ExtResource("2_lxwtg")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1730987583]
+scale = Vector2(0.2, 0.2)
+scroll_offset = Vector2(147.99994, 694)
+repeat_size = Vector2(6850, 0)
+autoscroll = Vector2(25, 0)
+repeat_times = 2
+limit_end = Vector2(15000000, 10000000)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1656566928]
+position = Vector2(575, 325)
+
 [node name="MenuUI" parent="." unique_id=1516809323 instance=ExtResource("4_74i4i")]
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 1152.0
-offset_bottom = 646.0
+offset_right = 1149.0
+offset_bottom = 643.0

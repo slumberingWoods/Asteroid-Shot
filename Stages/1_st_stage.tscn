@@ -10,7 +10,7 @@ ammo = 10
 allowed_sizes = Array[int]([0])
 
 [node name="Cannon" parent="." unique_id=1442655570 instance=ExtResource("1_j8kih")]
-position = Vector2(100, 350)
+position = Vector2(82, 350)
 rotation = 1.5707964
 scale = Vector2(1, 1)
 
@@ -18,3 +18,4 @@ scale = Vector2(1, 1)
 position = Vector2(746, 361)
 min_impact_speed = 100.0
 momentum_retained = 0.8
+is_final = true

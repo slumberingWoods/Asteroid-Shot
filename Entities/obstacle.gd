@@ -8,7 +8,7 @@ signal destroyed(by: Node, impact_speed: float)
 @export var max_health := 100.0
 @export var damage_per_speed := 0.5
 @export_range(0.0, 1.0) var momentum_retained := 0.6
-@export var debris_scene: PackedScene
+@export var is_final := false
 
 var health : float
 
@@ -30,8 +30,7 @@ func take_impact(impact_speed: float, by: Node = null) -> bool:
 
 func _destroy(by: Node, impact_speed: float):
 	destroyed.emit(by, impact_speed)
-	if debris_scene:
-		var d := debris_scene.instantiate()
-		d.global_position = global_position
-		get_parent().add_child.call_deferred(d)
+	if is_final:
+		StageManager.unload_stage()
+		EventBus.stage_cleared.emit()
 	queue_free()
