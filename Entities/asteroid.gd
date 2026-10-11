@@ -32,13 +32,14 @@ func _ready():
 	_base_sprite_scale = sprite.scale
 	_base_collision_scale = collision_shape.scale
 	apply_type()
+	add_to_group("asteroids")
 	if is_shot:
 		add_to_group("shots")
 	global_position = spawn_pos
 	global_rotation = spawn_rotation
 	velocity = Vector2.UP.rotated(spawn_rotation) * speed
 
-func apply_type() -> void:
+func apply_type():
 	var i := clampi(int(type), 0, type_scales.size() - 1)
 	var tex_i := clampi(int(type), 0, type_textures.size() - 1)
 	if not type_textures.is_empty() and type_textures[tex_i] != null:
@@ -47,7 +48,7 @@ func apply_type() -> void:
 	sprite.scale = _base_sprite_scale * s
 	collision_shape.scale = _base_collision_scale * s
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float):
 	velocity *= exp(-accel * delta)
 	if velocity.length() < stop_speed:
 		velocity = Vector2.ZERO

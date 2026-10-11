@@ -19,10 +19,10 @@ func can_be_captured() -> bool:
 
 ## Move closer to / farther from the center while orbiting.
 ## Clamped to the center's capture radius.
-func set_orbit_radius(r: float) -> void:
+func set_orbit_radius(r: float):
 	_radius = clampf(r, min_orbit_radius, center.capture_radius if center else r)
 
-func begin_orbit(c: OrbitCenter) -> void:
+func begin_orbit(c: OrbitCenter):
 	center = c
 	var offset := global_position - c.global_position
 	_angle = offset.angle()
@@ -37,7 +37,7 @@ func begin_orbit(c: OrbitCenter) -> void:
 	c.tree_exiting.connect(_on_center_gone, CONNECT_ONE_SHOT)
 	orbit_started.emit(c)
 
-func end_orbit() -> void:
+func end_orbit():
 	if center == null:
 		return
 	var old := center
@@ -51,12 +51,12 @@ func end_orbit() -> void:
 	_cooldown = recapture_cooldown
 	orbit_ended.emit(old)
 
-func _on_center_gone() -> void:
+func _on_center_gone():
 	if center:
 		center.orbiters.erase(self)
 		end_orbit()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float):
 	_cooldown = maxf(_cooldown - delta, 0.0)
 
 	if center == null:

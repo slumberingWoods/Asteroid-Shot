@@ -12,7 +12,7 @@ signal destroyed(by: Node, impact_speed: float)
 
 var health : float
 
-func _ready() -> void:
+func _ready():
 	health = max_health
 
 func take_impact(impact_speed: float, by: Node = null) -> bool:
@@ -28,7 +28,7 @@ func take_impact(impact_speed: float, by: Node = null) -> bool:
 		return true
 	return false
 
-func _destroy(by: Node, impact_speed: float) -> void:
+func _destroy(by: Node, impact_speed: float):
 	destroyed.emit(by, impact_speed)
 	if debris_scene:
 		var d := debris_scene.instantiate()

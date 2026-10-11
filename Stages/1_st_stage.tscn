@@ -7,7 +7,7 @@
 [node name="1st_stage" type="Node2D" unique_id=1260221731]
 script = ExtResource("1_mquqn")
 ammo = 10
-allowed_sizes = Array[int]([0, 2, 1])
+allowed_sizes = Array[int]([0])
 
 [node name="Cannon" parent="." unique_id=1442655570 instance=ExtResource("1_j8kih")]
 position = Vector2(100, 350)

@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://ciwnoah4mn5gu"]
 
+[ext_resource type="Script" uid="uid://dyo12ssrmaegq" path="res://Utilities/menu_manager.gd" id="1_005xu"]
+
 [node name="MenuUI" type="Control" unique_id=1516809323]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_005xu")
 
 [node name="MainMenu" type="MarginContainer" parent="." unique_id=692044111]
 layout_mode = 1
@@ -33,6 +36,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="GridContainer" type="GridContainer" parent="MainMenu/ColorRect/MarginContainer" unique_id=1756026459]
 layout_mode = 2
+
+[node name="Button" type="Button" parent="MainMenu/ColorRect/MarginContainer/GridContainer" unique_id=117825570]
+layout_mode = 2
+text = "Stage 1"
+
+[node name="Button2" type="Button" parent="MainMenu/ColorRect/MarginContainer/GridContainer" unique_id=1975860861]
+layout_mode = 2
+text = "Stage 2"
+
+[node name="Button" type="Button" parent="." unique_id=22069807]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Return to Menu"

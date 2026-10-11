@@ -7,5 +7,5 @@ class_name Stage
 @export var length := 1000
 @export var width := 500
 
-func _enter_tree() -> void:
+func _enter_tree():
 	StageManager.adopt_stage(self)

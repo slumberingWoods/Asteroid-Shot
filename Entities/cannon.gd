@@ -61,7 +61,7 @@ func shoot(mult: float):
 	instance.type = StageManager.selected_ammo_type  # assumes asteroid has a `type` property
 	get_tree().current_scene.add_child.call_deferred(instance)
 
-func switch_ammo(direction := 1) -> void:
+func switch_ammo(direction := 1):
 	StageManager.cycle_ammo_type(direction)
 
 func switch_ammo_to(type: GlobalEnums.AsteroidType) -> bool:
